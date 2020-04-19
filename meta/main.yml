@@ -4,7 +4,7 @@ dependencies: []
 galaxy_info:
   role_name: dotfiles
   author: agmalpartida
-  description: Dotfile installation for UNIX/Linux.
+  description: Dotfiles installation for UNIX/Linux.
   company: ""
   license: "license (BSD, MIT)"
   min_ansible_version: 2.2
