@@ -4,7 +4,7 @@ services: docker
 
 env:
   global:
-    - ROLE_NAME: dotfiles
+    - ROLE_NAME: ansible-role-dotfiles
   matrix:
     - MOLECULE_DISTRO: centos8
     - MOLECULE_DISTRO: centos7
@@ -20,10 +20,6 @@ install:
   - pip install molecule yamllint ansible-lint docker
 
 before_script:
-  # Use actual Ansible Galaxy role name for the project directory.
-  - cd ../
-  - mv $ROLE_NAME agmalpartida.$ROLE_NAME
-  - cd agmalpartida.$ROLE_NAME
 
 script:
   # Run tests.

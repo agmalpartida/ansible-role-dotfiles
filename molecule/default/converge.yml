@@ -22,4 +22,4 @@
         state: "present"
 
   roles:
-    - role: agmalpartida.dotfiles
+    - role: ansible-role-dotfiles
