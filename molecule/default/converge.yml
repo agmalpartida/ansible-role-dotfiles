@@ -1,4 +1,3 @@
-
 ---
 - name: Converge
   hosts: all
@@ -9,18 +8,18 @@
       apt: update_cache=true cache_valid_time=600
       when: ansible_os_family == 'Debian'
       changed_when: false
-    - name: Ensure Crontab is installed.
+    - name: Ensure Git is installed.
       when: ansible_os_family == 'Debian'
       changed_when: false
       apt:
-        name: "cron"
+        name: "git"
         state: "present"
-    - name: Ensure Crontab is installed.
+    - name: Ensure Git is installed.
       when: ansible_os_family == 'RedHat'
       changed_when: false
       yum:
-        name: "cronie"
+        name: "git"
         state: "present"
 
   roles:
-    - role: ansible-role-cron
+    - role: agmalpartida.dotfiles
