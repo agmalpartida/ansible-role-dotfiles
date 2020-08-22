@@ -47,6 +47,7 @@
   with_items: "{{ secrets_files }}"
 
 - name: Remove existing secrets file if a replacement is being linked.
+  become: false
   file:
     path: "{{ secrets_home }}/{{ secrets_files[item.0] }}"
     state: absent
