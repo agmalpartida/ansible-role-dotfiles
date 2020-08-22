@@ -29,3 +29,34 @@
     state: link
   become: false
   with_items: "{{ dotfiles_files }}"
+
+- name: Ensure secrets repository is cloned locally.
+  git:
+    repo: "{{ secrets_repo }}"
+    dest: "{{ secrets_repo_local_destination }}"
+    version: "{{ secrets_repo_version }}"
+    accept_hostkey: "{{ secrets_repo_accept_hostkey }}"
+  become: false
+
+- name: Ensure all configured secrets are links.
+  command: "ls -F {{ secrets_home }}/{{ item }}"
+  register: existing_secrets_info
+  failed_when: false
+  check_mode: false
+  changed_when: false
+  with_items: "{{ secrets_files }}"
+
+- name: Remove existing secrets file if a replacement is being linked.
+  file:
+    path: "{{ secrets_home }}/{{ secrets_files[item.0] }}"
+    state: absent
+  when: "'@' not in item.1.stdout"
+  with_indexed_items: "{{ existing_secrets_info.results }}"
+
+- name: Link secrets into home folder.
+  file:
+    src: "{{ secrets_repo_local_destination }}/{{ item }}"
+    dest: "{{ secrets_home }}/{{ item }}"
+    state: link
+  become: false
+  with_items: "{{ secrets_files }}"
