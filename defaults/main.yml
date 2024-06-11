@@ -1,14 +1,14 @@
 ---
-secrets_repo: "ssh://pi@acme:/mnt/hd/secrets-git"
-secrets_repo_version: master
-secrets_repo_accept_hostkey: false
-secrets_repo_local_destination: "~/Git/secrets-git"
-
-secrets_home: "~"
-secrets_files:
-  - .ssh
-  - .aws
-  - .google_credentials.json
+# secrets_repo: "ssh://pi@acme:/mnt/hd/secrets-git"
+# secrets_repo_version: master
+# secrets_repo_accept_hostkey: false
+# secrets_repo_local_destination: "~/Git/secrets-git"
+#
+# secrets_home: "~"
+# secrets_files:
+#   - .ssh
+#   - .aws
+#   - .google_credentials.json
 
 dotfiles_repo: "https://github.com/agmalpartida/dotfiles.git"
 dotfiles_repo_version: master
